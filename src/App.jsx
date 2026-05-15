@@ -51,8 +51,8 @@ export default function App() {
     setJustBuilt(true)
     setTimeout(() => setJustBuilt(false), 2500)
 
-    const url = ENGINE_URLS[engine]
-    if (url) window.open(url, '_blank', 'noopener,noreferrer')
+    // const url = ENGINE_URLS[engine]
+    // if (url) window.open(url, '_blank', 'noopener,noreferrer')
     
     // Clear old flashcards when generating a new prompt
     setFlashcards([])

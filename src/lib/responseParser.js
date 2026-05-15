@@ -16,16 +16,23 @@
 export function parseAIResponse(rawText) {
   if (!rawText.trim()) return []
 
-  // Split by numbered list pattern (e.g. "1. ", "1) ", "Word 1:")
-  // We use a lookahead to keep the numbers if needed, but here we just split
-  const entries = rawText.split(/(?:\n|^)\s*\d+[.)]\s+/).filter(Boolean)
+  // Split by any line that starts with a number followed by . or ) or :
+  // We use a regex that handles potential group headers by splitting and then 
+  // cleaning up each entry.
+  const entries = rawText
+    .split(/(?:\n|^)\s*\d+[\s.)-:]+\s*/)
+    .map(e => e.trim())
+    .filter(Boolean)
   
   return entries.map(entry => {
     const lines = entry.split('\n').map(l => l.trim()).filter(Boolean)
     const obj = {}
 
     lines.forEach(line => {
-      // 1. Check for "Word (POS) - Definition" pattern (Common AI format)
+      // Ignore lines that look like group headers (e.g. "Group 1", "Week 2")
+      if (line.match(/^(?:Group|Week|Unit|Set|Category|List)\s+\d+/i)) return
+
+      // 1. Check for "Word (POS) - Definition" pattern
       const inlineMatch = line.match(/^([^(]+)\s*(?:\(([^)]+)\))?\s*[-:]\s*(.*)$/)
       if (inlineMatch && !obj.word) {
         obj.word = inlineMatch[1].trim()
@@ -51,12 +58,12 @@ export function parseAIResponse(rawText) {
         const rawAssoc = line.replace(/\*\*Associations:\*\*/i, '').replace(/Associations:/i, '').replace(/\*\*Related:\*\*/i, '').trim()
         obj.associations = rawAssoc.split(',').map(s => s.trim()).filter(Boolean)
       }
-      // 3. Fallback: If it's the first non-empty line and no word yet
+      // 3. Fallback
       else if (!obj.word && line.length > 0) {
         obj.word = line.replace(/^\W+/, '').trim()
       }
     })
 
     return obj
-  }).filter(o => o.word) // Must have a word to be valid
+  }).filter(o => o.word && o.word.length > 1) 
 }
