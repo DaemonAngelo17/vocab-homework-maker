@@ -1,16 +1,49 @@
-# React + Vite
+# 📖 Vocab Homework Maker
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A premium, interactive digital notebook designed to help students and teachers generate beautiful vocabulary homework and flashcards using AI.
 
-Currently, two official plugins are available:
+![App Screenshot](https://raw.githubusercontent.com/DaemonAngelo17/vocab-homework-maker/main/public/screenshot-preview.png)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## ✦ Features
 
-## React Compiler
+- **Prompt Engineering Engine**: Build highly detailed, structured prompts for ChatGPT, Gemini, or Claude with one click.
+- **End-to-End Workflow**: Build a prompt → Paste into AI → Paste results back → Get beautiful flashcards.
+- **Handwritten Aesthetic**: Uses a custom marker-style font for vocabulary words to give it a realistic, personal touch.
+- **Staggered Animations**: Smooth, floating flashcards that slide into view with staggered entry animations.
+- **Notebook Design**: A clean, lined-paper UI with spiral-bound details and a modern dark settings bar.
+- **Customizable**: Toggle Parts of Speech, Definitions, Korean Translations, and Word Associations.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🛠️ Tech Stack
 
-## Expanding the ESLint configuration
+- **React** (Vite)
+- **Vanilla CSS** (Custom Design System)
+- **Google Fonts** (Inter, Caveat, Nanum Pen Script)
+- **AI Integration**: Structured prompt engineering for multi-LLM support.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🚀 Getting Started
+
+1. **Clone the repo**:
+   ```bash
+   git clone https://github.com/DaemonAngelo17/vocab-homework-maker.git
+   ```
+2. **Install dependencies**:
+   ```bash
+   npm install
+   ```
+3. **Run locally**:
+   ```bash
+   npm run dev
+   ```
+
+## 📝 How to Use
+
+1. Enter your **Topic** and choose a **Word Count**.
+2. Select your preferred **AI Engine** (Gemini, ChatGPT, or Claude).
+3. Click **✦ Build Prompt** — a new tab will open for the AI service.
+4. Copy the generated prompt from the notebook and paste it into the AI chat.
+5. Copy the AI's response and paste it into the **"Paste AI Response Here"** box at the bottom of the notebook.
+6. Click **✨ Format Flashcards** and watch your homework come to life!
+
+---
+
+Created with ❤️ by Antigravity AI.
